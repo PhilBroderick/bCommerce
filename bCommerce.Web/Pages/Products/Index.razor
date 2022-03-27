@@ -1,0 +1,26 @@
+﻿@page "/products"
+
+@if (_products == null)
+{
+	<p>Loading data...</p>
+}
+else 
+{
+	<div class="col-md-9">
+		<div class="row">
+			@foreach(var product in _products)
+			{
+				<div class="col-md-3">
+					<div class="card">
+						<img class="card-img-top" src="@product.ImageUrl" />
+						<div class="card-body">
+							<h5 class="card-title">@product.Name</h5>
+							<p class="card-text">@product.Description</p>
+							<button class="btn btn-primary" @onclick="() => AddToCart(product.Id)">Add to cart</button>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+}
